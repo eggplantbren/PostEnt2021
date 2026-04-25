@@ -52,15 +52,18 @@ int NSRun<Params, Data>::explore_posterior(int which_particle,
 template<typename Params, typename Data>
 void NSRun<Params, Data>::explore_posterior(Tools::RNG& rng)
 {
-    std::cout << "Initial exploration..." << std::flush;
+    std::cout << "Initial exploration" << std::flush;
 
     int accepted = 0;
     static constexpr int factor = 10;
     for(size_t i=0; i<particles.size(); ++i)
+    {
         for(int j=0; j<factor; ++j)
             accepted += explore_posterior(i, rng);
+        std::cout << '.' << std::flush;
+    }
 
-    std::cout << "done. Acceptance rate = " << accepted << '/';
+    std::cout << "done.\nAcceptance rate = " << accepted << '/';
     std::cout << factor*Constants::num_particles*Constants::mcmc_steps_per_particle << '.';
     std::cout << '\n' << std::endl;
 }
