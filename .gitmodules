@@ -1,3 +1,6 @@
 [submodule "Tools"]
 	path = Tools
 	url = https://github.com/eggplantbren/Tools
+[submodule "Examples/pybind11"]
+	path = Examples/pybind11
+	url = https://github.com/pybind/pybind11
