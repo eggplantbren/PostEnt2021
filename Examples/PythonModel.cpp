@@ -8,8 +8,9 @@ namespace PostEnt2021
 namespace PythonModel
 {
 
-void ensure_python_initialised() {
-    static pybind11::scoped_interpreter guard{};  // created once, destroyed last
+void ensure_python_initialised()
+{
+    static auto *guard = new pybind11::scoped_interpreter{};  // never destroyed
     static bool initialised = false;
 
     if (!initialised) {
@@ -20,6 +21,7 @@ void ensure_python_initialised() {
         initialised = true;
     }
 }
+
 
 
 
