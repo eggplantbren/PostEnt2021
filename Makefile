@@ -10,7 +10,7 @@ default:
 
 
 python:
-	$(CXX) $(FLAGS) -I . $(INCLUDE) -c Examples/PythonModel.cpp
-	$(CXX) $(FLAGS) -I . $(INCLUDE) -c main2.cpp
+	$(CXX) -Wno-attributes -Wno-unused-parameter $(FLAGS) -I . $(INCLUDE) -c Examples/PythonModel.cpp
+	$(CXX) -Wno-attributes -Wno-unused-parameter $(FLAGS) -I . $(INCLUDE) -c main2.cpp
 	$(CXX) -o main *.o -lpython3.12
 	rm -f *.o
