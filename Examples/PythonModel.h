@@ -5,6 +5,7 @@
 #include <pybind11/embed.h>
 #include <filesystem>
 #include <pybind11/numpy.h>
+#include <ostream>
 
 namespace PostEnt2021
 {
@@ -32,6 +33,10 @@ class PythonModelParams
 
         // Distance from another particle
         double distance_from(const PythonModelParams& other) const;
+
+        // Print
+        void print(std::ostream& out) const;
+        static void csv_header(std::ostream& out);
 
         friend class PythonModelData;
 

@@ -2,6 +2,7 @@
 #define PostEnt2021_Examples_Binomial_h
 
 #include "Tools/RNG.hpp"
+#include <ostream>
 
 namespace PostEnt2021
 {
@@ -24,6 +25,10 @@ class BinomialParams
 
         // Distance from another particle
         double distance_from(const BinomialParams& other) const;
+
+        // Print
+        void print(std::ostream& out) const;
+        static void csv_header(std::ostream& out);
 
         friend class BinomialData;
 

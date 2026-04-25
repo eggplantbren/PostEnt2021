@@ -27,6 +27,16 @@ double BinomialParams::distance_from(const BinomialParams& other) const
     return std::abs(other.theta - theta);
 }
 
+void BinomialParams::print(std::ostream& out) const
+{
+    out << theta;
+}
+
+void BinomialParams::csv_header(std::ostream& out)
+{
+    out << "theta";
+}
+
 BinomialData::BinomialData(const BinomialParams& params, Tools::RNG& rng)
 {
     x = 0;

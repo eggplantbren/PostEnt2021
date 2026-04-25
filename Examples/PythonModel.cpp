@@ -93,6 +93,28 @@ double PythonModelParams::perturb(Tools::RNG& rng)
     return 0.0;
 }
 
+void PythonModelParams::print(std::ostream& out) const
+{
+    for(size_t i=0; i<params.size(); ++i)
+    {
+        out << params[i];
+        if(i < (params.size()-1))
+            out << ',';
+    }
+}
+
+void PythonModelParams::csv_header(std::ostream& out)
+{
+    for(int i=0; i<size; ++i)
+    {
+        out << "params[" << i << "]";
+        if(i < (size-1))
+            out << ',';
+    }
+}
+
+
+
 void PythonModelParams::prior_transform()
 {
     pybind11::array_t<double> numpy_array(us.size(),

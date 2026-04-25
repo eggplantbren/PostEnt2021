@@ -87,16 +87,31 @@ void NSRun<Params, Data>::do_iteration(Tools::RNG& rng)
     if(ns_run_id > 1 || iteration > 1)
         mode = mode | std::ios::app;
     std::fstream fout("output.csv", mode);
+    std::fstream fout2("reference_particles.csv", mode);
 
     // Header
     if(ns_run_id == 1 && iteration == 1)
+    {
         fout << "ns_run_id,iteration,depth,distance" << std::endl;
+        fout2 << "ns_run_id,";
+        Params::csv_header(fout2);
+        fout2 << std::endl;     
+    }
+
+    if(iteration == 1)
+    {
+        fout2 << ns_run_id << ',';
+        truth.print(fout2);
+        fout2 << std::endl;
+        fout2.close();
+    }
 
     // Output line
     fout << ns_run_id << ',';
     fout << iteration << ',' << (double)(iteration)/particles.size() << ',';
     fout << distances_from_truth[worst] << std::endl;
     fout.close();
+
 
     std::cout << "(ns_run_id, iteration, depth, distance) = ";
     std::cout << '(' << ns_run_id << ", ";
