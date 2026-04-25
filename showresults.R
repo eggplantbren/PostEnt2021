@@ -27,14 +27,17 @@ if(num_nas > 0)
 {
     head = nas[-length(nas)]
     if(any(head))
-        stop("Incomplete runs found that ARE NOT the final run. Quitting.")
+        stop("Incomplete runs found that ARE NOT the final run. Quitting. You can try a bigger radius.")
 
     cat("Excluding final run as it has not reached the required radius.\n")
     depths = depths[!nas]
 }
 
+# Mean -log(mass) inside ball. To convert to log(density) you need
+# log(density) = log(prob) - log(volume). Then, the posterior entropy
+# is minus the mean log(density).
 mean_depth = mean(depths)
-h = -mean_depth - log(nball_volume)
+h = mean_depth + log(nball_volume)
 sd_depths = sd(depths)
 sem = sd_depths / sqrt(length(depths))
 
