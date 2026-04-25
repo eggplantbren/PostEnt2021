@@ -32,6 +32,7 @@ if(num_nas > 0)
     cat("Excluding final run as it has not reached the required radius.\n")
     depths = depths[!nas]
 }
+cat("Using", length(depths), "runs for calculation.\n")
 
 # Mean -log(mass) inside ball. To convert to log(density) you need
 # log(density) = log(prob) - log(volume). Then, the posterior entropy
