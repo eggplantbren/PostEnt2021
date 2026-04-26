@@ -1,0 +1,4 @@
+num_particles = 10
+mcmc_steps_per_particle = 5000
+target_depth_nats = 20.0
+total_runs = 1000
