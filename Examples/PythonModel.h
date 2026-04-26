@@ -63,6 +63,21 @@ class PythonModelData
 
 } // namespace PythonModel
 
+
+inline std::string& model_path_storage() {
+    static std::string path;
+    return path;
+}
+
+inline void set_model_path(const std::string& p) {
+    model_path_storage() = p;
+}
+
+inline const std::string& get_model_path() {
+    return model_path_storage();
+}
+
+
 } // namespace
 
 #endif
