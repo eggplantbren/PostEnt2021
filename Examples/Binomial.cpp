@@ -50,7 +50,7 @@ BinomialData::BinomialData(const BinomialParams& params, Tools::RNG& rng)
 double BinomialData::log_likelihood(const BinomialParams& params) const
 {
     double logl = 0.0;
-    logl += std::lgamma(N + 1) - std::lgamma(x + 1) - std::lgamma(N + x - 1);
+    logl += std::lgamma(N + 1) - std::lgamma(x + 1) - std::lgamma(N - x + 1);
     logl += x*log(params.theta) + (N - x)*log(1.0 - params.theta);
     return logl;
 }
